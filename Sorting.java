@@ -6,7 +6,7 @@ public class Compare
 	public static void main(String[] args) 
 	{
 		// create a random array
-		int size = 200;
+		int size = 50;
 		int[] unsorted = new int[size];
 		for(int i=0;i<size;i++)
 			{
@@ -14,11 +14,13 @@ public class Compare
 			unsorted[i] = x.nextInt(1000);
 			}
 		System.out.println("We have an unsorted array of " + size + " random elements of value between 0 and 1000");
-		/* display unsorted array
-		for(int j : unsorted)
-			System.out.print(j + " ");
-		System.out.println();
-		*/
+		/* display unsorted array if not more than 50 elements */
+		if(size<=50)
+		{
+			for(int j : unsorted)
+				System.out.print(j + " ");
+			System.out.println();
+		}
 		System.out.println("Let's sort it.\n");
 		
 		//create object that will be sorted with Insertion Sort
@@ -37,7 +39,8 @@ public class Compare
 		HeapSorter sortHS = new HeapSorter(unsorted,size);
 		
 		System.out.println("This is the result of Heap Sorter:");
-		sortHS.measureSortingTimeDisplayResults();			
+		sortHS.measureSortingTimeDisplayResults();	
+				
 	}
 }
 
@@ -102,13 +105,15 @@ public abstract class Sorter {
 	
 	public void print()
 	{
-		/*
-		System.out.println("Here is the sorted array:");
-		for(int k:unsorted)
-			System.out.print(k + " ");
-		System.out.println();
-		*/
-		System.out.println("Sorting time in nanoseconds: " + time + "\n");
+		System.out.println("Sorting time in nanoseconds: " + time);
+		/* display sorted array only if not more than 50 elements */
+		if (size<=50)
+		{
+			System.out.println("Here is the sorted array:");
+			for(int k:unsorted)
+				System.out.print(k + " ");
+			System.out.println("\n");
+		}
 	}
 	
 	public void measureSortingTimeDisplayResults()
@@ -220,4 +225,3 @@ public class HeapSorter extends Sorter
 
 	
 }
-
