@@ -22,44 +22,27 @@ public class Compare
 		System.out.println("Let's sort it.\n");
 		
 		//create object that will be sorted with Insertion Sort
-		InsertionSortTimeMeasure sortIS = new InsertionSortTimeMeasure(unsorted,size);
+		InsertionSorter sortIS = new InsertionSorter(unsorted,size);
 		
-		sortIS.startTime();
-		sortIS.sort(); //sort given array		
-		sortIS.stopTime();	
+		System.out.println("This is the result of Insertion Sorter:");
+		sortIS.measureSortingTimeDisplayResults();
 		
-		sortIS.printStartTime();
-		sortIS.printStopTime();
-		sortIS.print(); //print sorted array + time
-	
 		//create object that will be sorted with Selection Sort
-		SelectionSortTimeMeasure sortSS = new SelectionSortTimeMeasure(unsorted,size);
+		SelectionSorter sortSS = new SelectionSorter(unsorted,size);
 		
-		sortSS.startTime();
-		sortSS.sort(); //sort given array
-		sortSS.stopTime();
-		
-		sortSS.printStartTime();
-		sortSS.printStopTime();
-		sortSS.print();  //print sorted array + time
+		System.out.println("This is the result of Selection Sorter:");
+		sortSS.measureSortingTimeDisplayResults();
 		
 		//create object that will be sorted with Heap Sort
-		HeapSortTimeMeasure sortHS = new HeapSortTimeMeasure(unsorted,size);
+		HeapSorter sortHS = new HeapSorter(unsorted,size);
 		
-		sortHS.startTime();
-		sortHS.sort(); //sort given array
-		sortHS.stopTime();
-		
-		sortHS.printStartTime();
-		sortHS.printStopTime();
-		sortHS.print();  //print sorted array + time		
-				
+		System.out.println("This is the result of Heap Sorter:");
+		sortHS.measureSortingTimeDisplayResults();			
 	}
 }
 
 
-
-public class TimeMeasure {
+public abstract class Sorter {
 	
 	public long start;
 	public long stop;
@@ -67,7 +50,7 @@ public class TimeMeasure {
 	public int[] unsorted;
 	public int size;
 	
-	public TimeMeasure(int[] givenArray, int givenSize)
+	public Sorter(int[] givenArray, int givenSize)
 	{
 		start = 0;
 		stop = 0;
@@ -101,13 +84,51 @@ public class TimeMeasure {
 	{
 		return time;
 	}
+	
+	public abstract void sort();
+	
+	public int[] getSorted() //returns sorted array
+	{
+		sort();
+		return unsorted;
+	}
+	
+	public void swap(int number1, int number2)
+	{
+		int help = unsorted[number1];
+		unsorted[number1] = unsorted[number2];
+		unsorted[number2] = help;
+	}
+	
+	public void print()
+	{
+		/*
+		System.out.println("Here is the sorted array:");
+		for(int k:unsorted)
+			System.out.print(k + " ");
+		System.out.println();
+		*/
+		System.out.println("Sorting time in nanoseconds: " + time + "\n");
+	}
+	
+	public void measureSortingTimeDisplayResults()
+	{
+		this.startTime();
+		this.sort(); //sort given array		
+		this.stopTime();	
+		
+		this.printStartTime();
+		this.printStopTime();
+		this.print(); //print sorted array + time
+	
+	}
 
 }
 
-public class InsertionSortTimeMeasure extends TimeMeasure
+public class InsertionSorter extends Sorter
 {
 	
-	public InsertionSortTimeMeasure(int[] unsortedIS, int sizeIS)
+	public InsertionSorter(int[] unsortedIS, int sizeIS)
 	{
 		super(unsortedIS,sizeIS);
 	}
@@ -126,32 +147,12 @@ public class InsertionSortTimeMeasure extends TimeMeasure
 			unsorted[j+1]=key;
 		}
 	}
-	
-	public int[] getSorted() //returns sorted array
-	{
-		sort();
-		return unsorted;
-	}
-	
-	public void print() //prints sorted array and sorting time
-	{
-		/*
-		System.out.println("Here is the result after using Insertion Sort:");
-		for(int k : unsorted)
-			System.out.print(k + " ");
-		System.out.println();
-		*/
-		System.out.println("Sorting time with Insertion Sort algorithm in nanoseconds: "+time+"\n");
-		
-	}
-
 }
 
-
-public class SelectionSortTimeMeasure extends TimeMeasure
+public class SelectionSorter extends Sorter
 {
 	
-	public SelectionSortTimeMeasure(int[] unsortedSS, int sizeSS)
+	public SelectionSorter(int[] unsortedSS, int sizeSS)
 	{
 		super(unsortedSS,sizeSS);
 	}
@@ -169,40 +170,12 @@ public class SelectionSortTimeMeasure extends TimeMeasure
 			swap(j,max);
 		}
 	}
-	
-	private void swap(int element1, int element2)
-	{
-		int help = unsorted[element1];
-		unsorted[element1]=unsorted[element2];
-		unsorted[element2]=help;
-	}
-	
-	public int[] getSorted() //returns sorted array
-	{
-		sort();
-		return unsorted;
-	}
-	
-	public void print() //prints sorted array and sorting time
-	{
-		/*
-		System.out.println("Here is the result after using Selection Sort:");
-		for(int k : unsorted)
-			System.out.print(k + " ");
-		System.out.println();
-		*/
-		System.out.println("Sorting time with Selection Sort algorithm in nanoseconds: "+time+"\n");
-		
-	}
-
-
 }
 
-
-public class HeapSortTimeMeasure extends TimeMeasure
+public class HeapSorter extends Sorter
 {
 
-	public HeapSortTimeMeasure(int[] unsortedHS, int sizeHS)
+	public HeapSorter(int[] unsortedHS, int sizeHS)
 	{
 		super(unsortedHS,sizeHS);
 	}
@@ -244,29 +217,7 @@ public class HeapSortTimeMeasure extends TimeMeasure
 		
 	}
 	
-	private void swap(int number1, int number2)
-	{
-		int help = unsorted[number1];
-		unsorted[number1] = unsorted[number2];
-		unsorted[number2] = help;
-	}
-	
-	
-	public int[] getSorted()
-	{
-		sort();
-		return unsorted;
-	}
-	
-	public void print()
-	{
-		/*
-		System.out.println("Here is the result after using Heap Sort:");
-		for(int k:unsorted)
-			System.out.print(k + " ");
-		System.out.println();
-		*/
-		System.out.println("Sorting time with Heap Sort algorithm in nanoseconds: " + time);
-	}
+
 	
 }
+
