@@ -36,8 +36,8 @@ public class Compare
 	}
 }
 
-public abstract class Sorter {
-	
+public abstract class Sorter 
+{
 	public String sorterName = new String();
 	public long start;
 	public long stop;
@@ -124,7 +124,6 @@ public abstract class Sorter {
 
 public class InsertionSorter extends Sorter
 {
-	
 	public InsertionSorter(int[] unsortedIS, int sizeIS)
 	{
 		super(unsortedIS,sizeIS);
@@ -149,7 +148,6 @@ public class InsertionSorter extends Sorter
 
 public class SelectionSorter extends Sorter
 {
-
 	public SelectionSorter(int[] unsortedSS, int sizeSS)
 	{
 		super(unsortedSS,sizeSS);
@@ -173,7 +171,6 @@ public class SelectionSorter extends Sorter
 
 public class HeapSorter extends Sorter
 {
-
 	public HeapSorter(int[] unsortedHS, int sizeHS)
 	{
 		super(unsortedHS,sizeHS);
