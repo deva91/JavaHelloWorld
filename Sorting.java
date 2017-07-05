@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Compare 
 {
-
 	public static void main(String[] args) 
 	{
 		// create a random array
