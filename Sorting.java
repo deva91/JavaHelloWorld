@@ -25,28 +25,21 @@ public class Compare
 		
 		//create object that will be sorted with Insertion Sort
 		InsertionSorter sortIS = new InsertionSorter(unsorted,size);
-		
-		System.out.println("This is the result of Insertion Sorter:");
 		sortIS.measureSortingTimeDisplayResults();
 		
 		//create object that will be sorted with Selection Sort
 		SelectionSorter sortSS = new SelectionSorter(unsorted,size);
-		
-		System.out.println("This is the result of Selection Sorter:");
 		sortSS.measureSortingTimeDisplayResults();
 		
 		//create object that will be sorted with Heap Sort
 		HeapSorter sortHS = new HeapSorter(unsorted,size);
-		
-		System.out.println("This is the result of Heap Sorter:");
-		sortHS.measureSortingTimeDisplayResults();	
-				
+		sortHS.measureSortingTimeDisplayResults();		
 	}
 }
 
-
 public abstract class Sorter {
 	
+	public String sorterName = new String();
 	public long start;
 	public long stop;
 	public long time;
@@ -118,6 +111,8 @@ public abstract class Sorter {
 	
 	public void measureSortingTimeDisplayResults()
 	{
+		System.out.println("This is the result of " + sorterName + "Sorter:");
+		
 		this.startTime();
 		this.sort(); //sort given array		
 		this.stopTime();	
@@ -125,9 +120,7 @@ public abstract class Sorter {
 		this.printStartTime();
 		this.printStopTime();
 		this.print(); //print sorted array + time
-	
 	}
-
 }
 
 public class InsertionSorter extends Sorter
@@ -136,6 +129,7 @@ public class InsertionSorter extends Sorter
 	public InsertionSorter(int[] unsortedIS, int sizeIS)
 	{
 		super(unsortedIS,sizeIS);
+		this.sorterName = "Insertion ";
 	}
 	
 	public void sort() //just sorts given array
@@ -156,10 +150,11 @@ public class InsertionSorter extends Sorter
 
 public class SelectionSorter extends Sorter
 {
-	
+
 	public SelectionSorter(int[] unsortedSS, int sizeSS)
 	{
 		super(unsortedSS,sizeSS);
+		this.sorterName = "Selection ";
 	}
 	
 	public void sort() //just sorts given array
@@ -183,6 +178,7 @@ public class HeapSorter extends Sorter
 	public HeapSorter(int[] unsortedHS, int sizeHS)
 	{
 		super(unsortedHS,sizeHS);
+		this.sorterName = "Heap ";
 	}
 	
 	public void sort()
@@ -219,9 +215,5 @@ public class HeapSorter extends Sorter
 			swap(index,max);
 			heapify(max,sizeH);
 		}
-		
 	}
-	
-
-	
 }
