@@ -1,9 +1,9 @@
 public abstract class Sorter 
 {
 	public String sorterName = new String();
-	public long start;
-	public long stop;
-	public long time;
+	public long start = 0;
+	public long stop = 0;
+	public long time = 0;
 	public int[] unsorted;
 	public int size;
 	
@@ -60,12 +60,12 @@ public abstract class Sorter
 	{
 		System.out.println("This is the result of " + sorterName + "Sorter:");
 		
-		this.startTime();
-		this.sort(); //sort given array		
-		this.stopTime();	
+		startTime();
+		sort(); //sort given array		
+		stopTime();	
 		
-		this.printStartTime();
-		this.printStopTime();
-		this.print(); //print sorted array + time
+		printStartTime();
+		printStopTime();
+		print(); //print sorted array + time
 	}
 }
