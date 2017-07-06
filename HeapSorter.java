@@ -3,7 +3,7 @@ public class HeapSorter extends Sorter
 	public HeapSorter(int[] unsortedHS, int sizeHS)
 	{
 		super(unsortedHS,sizeHS);
-		this.sorterName = "Heap ";
+		sorterName = "Heap ";
 	}
 	
 	public void sort()
