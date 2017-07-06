@@ -3,7 +3,7 @@ public class SelectionSorter extends Sorter
 	public SelectionSorter(int[] unsortedSS, int sizeSS)
 	{
 		super(unsortedSS,sizeSS);
-		this.sorterName = "Selection ";
+		sorterName = "Selection ";
 	}
 	
 	public void sort() //just sorts given array
