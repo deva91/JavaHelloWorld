@@ -3,7 +3,7 @@ public class InsertionSorter extends Sorter
 	public InsertionSorter(int[] unsortedIS, int sizeIS)
 	{
 		super(unsortedIS,sizeIS);
-		this.sorterName = "Insertion ";
+		sorterName = "Insertion ";
 	}
 	
 	public void sort() //just sorts given array
