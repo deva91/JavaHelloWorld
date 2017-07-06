@@ -3,7 +3,8 @@ import java.util.Random;
 public class ArrayGenerator 
 {
 	public int size = 25;
-	int[] unsorted = new int[size];
+	public int range = 1000;
+	public int[] unsorted = new int[size];
 	
 	public ArrayGenerator(int size)
 	{
@@ -15,7 +16,7 @@ public class ArrayGenerator
 		for(int i=0;i<size;i++)
 			{
 			Random x = new Random();
-			unsorted[i] = x.nextInt(1000);
+			unsorted[i] = x.nextInt(range);
 			}
 		printArray();
 		return unsorted;
@@ -23,7 +24,7 @@ public class ArrayGenerator
 		
 	private void printArray()
 	{	
-		System.out.println("We have an unsorted array of " + size + " random elements of value between 0 and 1000");
+		System.out.println("We have an unsorted array of " + size + " random elements of value between 0 and " + range);
 	
 		// display unsorted array if not more than 50 elements
 		if(size<=50)
