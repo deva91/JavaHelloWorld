@@ -9,9 +9,6 @@ public abstract class Sorter
 	
 	public Sorter(int[] givenArray, int givenSize)
 	{
-		start = 0;
-		stop = 0;
-		time = 0;
 		unsorted = givenArray;
 		size = givenSize;
 	}
@@ -37,18 +34,7 @@ public abstract class Sorter
 		System.out.println("Stop time is " + stop);
 	}
 	
-	public long getTime()
-	{
-		return time;
-	}
-	
 	public abstract void sort();
-	
-	public int[] getSorted() //returns sorted array
-	{
-		sort();
-		return unsorted;
-	}
 	
 	public void swap(int number1, int number2)
 	{
