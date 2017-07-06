@@ -1,9 +1,7 @@
 public abstract class Sorter 
 {
 	public String sorterName = new String();
-	public long start = 0;
-	public long stop = 0;
-	public long time = 0;
+	public long start, stop, time;
 	public int[] unsorted;
 	public int size;
 	
@@ -59,7 +57,6 @@ public abstract class Sorter
 	public void measureSortingTimeDisplayResults()
 	{
 		System.out.println("This is the result of " + sorterName + "Sorter:");
-		
 		startTime();
 		sort(); //sort given array		
 		stopTime();	
