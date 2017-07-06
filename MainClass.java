@@ -1,4 +1,4 @@
-public class Compare 
+public class MainClass 
 {
 	public static void main(String[] args) 
 	{
