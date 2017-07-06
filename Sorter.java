@@ -1,7 +1,7 @@
 public abstract class Sorter 
 {
 	public String sorterName = new String();
-	public long start, stop, time;
+	private long start, stop, time;
 	public int[] unsorted;
 	public int size;
 	
@@ -11,23 +11,23 @@ public abstract class Sorter
 		size = givenSize;
 	}
 	
-	public void startTime()
+	private void startTime()
 	{
 		start = System.nanoTime();
 	}
 	
-	public void printStartTime()
+	private void printStartTime()
 	{
 		System.out.println("Start time is " + start);
 	}
 	
-	public void stopTime()
+	private void stopTime()
 	{
 		stop = System.nanoTime();
 		time = stop - start;
 	}
 	
-	public void printStopTime()
+	private void printStopTime()
 	{
 		System.out.println("Stop time is " + stop);
 	}
@@ -41,7 +41,7 @@ public abstract class Sorter
 		unsorted[number2] = help;
 	}
 	
-	public void print()
+	private void print()
 	{
 		System.out.println("Sorting time in nanoseconds: " + time);
 		/* display sorted array only if not more than 50 elements */
