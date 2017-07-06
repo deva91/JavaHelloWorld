@@ -30,8 +30,7 @@ public class ArrayGenerator
 		{
 			for(int j : unsorted)
 				System.out.print(j + " ");
-			System.out.println();
+			System.out.println("\n");
 		}
-		System.out.println("Let's sort it.\n");
 	}
 }
