@@ -13,7 +13,8 @@ public class Compare
 			unsorted[i] = x.nextInt(1000);
 			}
 		System.out.println("We have an unsorted array of " + size + " random elements of value between 0 and 1000");
-		/* display unsorted array if not more than 50 elements */
+		
+		// display unsorted array if not more than 50 elements
 		if(size<=50)
 		{
 			for(int j : unsorted)
