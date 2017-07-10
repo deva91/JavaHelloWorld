@@ -20,5 +20,9 @@ public class MainClass
 		//create object that will be sorted with Heap Sort
 		HeapSorter sortHS = new HeapSorter(unsorted,size);
 		sortHS.measureSortingTimeDisplayResults();	
+		
+		//create object that will be sorted with Merge Sort
+		MergeSorter sortMS = new MergeSorter(unsorted,size);
+		sortMS.measureSortingTimeDisplayResults();	
 	}
 }
