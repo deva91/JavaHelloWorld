@@ -1,11 +1,12 @@
 public class ArrayAShape implements ArrayGenerator
 {
-	public int size = 25;
-	public int[] unsorted = new int[size];
+	public int size;
+	public int[] unsorted;
 	
 	public ArrayAShape(int size)
 	{
 		this.size = size;
+		unsorted = new int[size];
 	}
 	
 	public int[] getAndPrintArray()
@@ -20,7 +21,7 @@ public class ArrayAShape implements ArrayGenerator
 		
 	public void printArray()
 	{	
-		System.out.println("We have an unsorted array of " + size + " elements in A-shape order of value between 0 and " + size/2);
+		System.out.println("\nWe have an unsorted array of " + size + " elements in A-shape order of value between 0 and " + size/2);
 	
 		// display unsorted array if not more than 50 elements
 		if(size<=50)

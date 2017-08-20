@@ -56,7 +56,7 @@ public abstract class Sorter
 	
 	public void measureSortingTimeDisplayResults()
 	{
-		System.out.println("This is the result of " + sorterName + "Sorter:");
+		System.out.println("\nThis is the result of " + sorterName + "Sorter:");
 		startTime();
 		sort(); //sort given array		
 		stopTime();	

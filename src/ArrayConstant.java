@@ -2,14 +2,16 @@ import java.util.Random;
 
 public class ArrayConstant implements ArrayGenerator
 {
-	public int size = 25;
-	public int[] unsorted = new int[size];
+	public int size;
+	public int[] unsorted;
 	private Random rand = new Random();
-	private int x = rand.nextInt(size);
+	private int x;
 	
 	public ArrayConstant(int size)
 	{
 		this.size = size;
+		unsorted = new int[size];
+		x = rand.nextInt(size);
 	}
 	
 	public int[] getAndPrintArray()
@@ -22,7 +24,7 @@ public class ArrayConstant implements ArrayGenerator
 		
 	public void printArray()
 	{	
-		System.out.println("We have an unsorted array of " + size + " equal elements of value " + x);
+		System.out.println("\nWe have an unsorted array of " + size + " equal elements of value " + x);
 	
 		// display unsorted array if not more than 50 elements
 		if(size<=50)

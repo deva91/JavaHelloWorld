@@ -1,11 +1,12 @@
 public class ArrayDecreasing implements ArrayGenerator
 {
-	public int size = 25;
-	public int[] unsorted = new int[size];
+	public int size;
+	public int[] unsorted;
 	
 	public ArrayDecreasing(int size)
 	{
 		this.size = size;
+		unsorted = new int[size];
 	}
 	
 	public int[] getAndPrintArray()
@@ -18,7 +19,7 @@ public class ArrayDecreasing implements ArrayGenerator
 		
 	public void printArray()
 	{	
-		System.out.println("We have an unsorted array of " + size + " elements in decreasing order of value between 0 and " + (size-1));
+		System.out.println("\nWe have an unsorted array of " + size + " elements in decreasing order of value between 0 and " + (size-1));
 	
 		// display unsorted array if not more than 50 elements
 		if(size<=50)

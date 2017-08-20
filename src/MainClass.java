@@ -1,19 +1,90 @@
+import java.util.Scanner;
+
 public class MainClass 
 {
+			
 	public static void main(String[] args) 
 	{
-		// generate an array
-		int size = 25;
+		String[] arrayTypeNames = {"All","Random","Increasing","Decreasing","A-shape","V-shape","Constant"};
+		
+		System.out.println("Hello. This program sorts an array and provide you time of sorting."
+				+"\nIt can also compare time between different sorting methods."
+				+"\nPlease provide size of the array that will be sorted. Type integer number bigger than 0.");
+		
+		Scanner values = new Scanner(System.in);
+		int size = 0;
+		
+		boolean noException = false;
+		while(!noException)
+		{
+			try
+			{
+				size = values.nextInt();
+				
+				if (size == (int)size)
+				{
+					if (size <= 0)
+						throw new Exception();
+					noException = true;
+				}
+				else
+				{
+					throw new Exception();
+				}
+			}
+			catch (Exception exception)
+			{	
+				System.out.println("Input is not correct. Try again.");
+				values.nextLine();
+				continue;
+			}
+		}
+		
 		int[] unsorted = new int[size];
 		
 		ArrayGenerator helpArray = new ArrayRandom(size);
 		int arrayType = 1; //default - random, otherwise 2-6 chosen type
-
+	
+		System.out.println("\nPlease choose array type. Type integer number between 1 and 6."
+				+ "\n1. "+arrayTypeNames[1]
+				+ "\n2. "+arrayTypeNames[2]
+				+ "\n3. "+arrayTypeNames[3]
+				+ "\n4. "+arrayTypeNames[4]
+				+ "\n5. "+arrayTypeNames[5]
+				+ "\n6. "+arrayTypeNames[6]);
+		
+		noException = false;
+		while(!noException)
+		{
+			try
+			{
+				arrayType = values.nextInt();
+			
+				if (arrayType == (int)arrayType)
+				{
+					if (arrayType <= 0 || arrayType >6)
+						throw new Exception();
+				}
+				else
+					throw new Exception();
+				
+				noException = true;
+			}
+			catch (Exception exception)
+			{
+				System.out.println("Wrong input. Try again.");
+				values.nextLine();
+				continue;
+			}
+		}
+		
+		System.out.println("You have chosen number " + arrayType + ". " + arrayTypeNames[arrayType] + " array will be created.");
+		values.close();
 		
 		switch(arrayType) 
 		{
 		case 1: break;
-		case 2: helpArray = new ArrayIncreasing(size); 
+		case 2: helpArray = new ArrayIncreasing(size);
 				break;
 		case 3: helpArray = new ArrayDecreasing(size); 
 				break;

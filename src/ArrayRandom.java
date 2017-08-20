@@ -2,13 +2,14 @@ import java.util.Random;
 
 class ArrayRandom implements ArrayGenerator
 {
-	public int size = 25;
+	public int size;
 	public int range = 100;
-	public int[] unsorted = new int[size];
+	public int[] unsorted;
 	
 	public ArrayRandom(int size)
 	{
 		this.size = size;
+		unsorted = new int[size];
 	}
 	
 	public int[] getAndPrintArray()
@@ -24,7 +25,7 @@ class ArrayRandom implements ArrayGenerator
 		
 	public void printArray()
 	{	
-		System.out.println("We have an unsorted array of " + size + " random elements of value between 0 and " + range);
+		System.out.println("\nWe have an unsorted array of " + size + " random elements of value between 0 and " + range);
 	
 		// display unsorted array if not more than 50 elements
 		if(size<=50)
