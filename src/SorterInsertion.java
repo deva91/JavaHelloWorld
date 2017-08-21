@@ -21,3 +21,4 @@ public class SorterInsertion extends Sorter
 		}
 	}
 }
+

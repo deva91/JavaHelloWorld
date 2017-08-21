@@ -30,3 +30,4 @@ public class ArrayDecreasing implements ArrayGenerator
 		}
 	}
 }
+

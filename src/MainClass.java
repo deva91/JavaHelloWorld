@@ -9,41 +9,12 @@ public class MainClass
 		
 		System.out.println("Hello. This program sorts an array and provide you time of sorting."
 				+"\nIt can also compare time between different sorting methods."
-				+"\nPlease provide size of the array that will be sorted. Type integer number bigger than 0.");
+				+"\nPlease provide size of the array that will be sorted. Type integer number between 1 and 500 000.");
 		
 		Scanner values = new Scanner(System.in);
-		int size = 0;
 		
-		boolean noException = false;
-		while(!noException)
-		{
-			try
-			{
-				size = values.nextInt();
-				
-				if (size == (int)size)
-				{
-					if (size <= 0)
-						throw new Exception();
-					noException = true;
-				}
-				else
-				{
-					throw new Exception();
-				}
-			}
-			catch (Exception exception)
-			{	
-				System.out.println("Input is not correct. Try again.");
-				values.nextLine();
-				continue;
-			}
-		}
-		
+		int size = scanInputWithNoExceptions(values,1,500000);
 		int[] unsorted = new int[size];
-		
-		ArrayGenerator helpArray = new ArrayRandom(size);
-		int arrayType = 1; //default - random, otherwise 2-6 chosen type
 	
 		System.out.println("\nPlease choose array type. Type integer number between 1 and 6."
 				+ "\n1. "+arrayTypeNames[1]
@@ -53,34 +24,12 @@ public class MainClass
 				+ "\n5. "+arrayTypeNames[5]
 				+ "\n6. "+arrayTypeNames[6]);
 		
-		noException = false;
-		while(!noException)
-		{
-			try
-			{
-				arrayType = values.nextInt();
-			
-				if (arrayType == (int)arrayType)
-				{
-					if (arrayType <= 0 || arrayType >6)
-						throw new Exception();
-				}
-				else
-					throw new Exception();
-				
-				noException = true;
-			}
-			catch (Exception exception)
-			{
-				System.out.println("Wrong input. Try again.");
-				values.nextLine();
-				continue;
-			}
-		}
+		int arrayType = scanInputWithNoExceptions(values,1,6);
 		
 		System.out.println("You have chosen number " + arrayType + ". " + arrayTypeNames[arrayType] + " array will be created.");
-		values.close();
 		
+		ArrayGenerator helpArray = new ArrayRandom(size);
+
 		switch(arrayType) 
 		{
 		case 1: break;
@@ -98,8 +47,18 @@ public class MainClass
 		
 		unsorted = helpArray.getAndPrintArray();
 		
+		System.out.println("Please choose sorting method."
+				+ "\n0. All"
+				+ "\n1. Insertion Sort"
+				+ "\n2. Selection Sort"
+				+ "\n3. Heap Sort"
+				+ "\n4. Merge Sort");
+		
 		boolean all = false;
-		int sortingType = 0; // 0 - all, 1-4 - chosen method
+		int sortingType = scanInputWithNoExceptions(values,0,4); // 0 - all, 1-4 - chosen method
+		
+		values.close();
+		
 		if (sortingType==0) 
 		{
 			sortingType = 1; 
@@ -121,7 +80,40 @@ public class MainClass
 					sortMS.measureSortingTimeDisplayResults();
 					if(!all) break;
 		}
-
-
 	}
+	
+	private static int scanInputWithNoExceptions(Scanner values, int min, int max)
+	{
+		boolean noException = false;
+		int input=0;
+		
+		while(!noException)
+		{
+			try
+			{
+				input = values.nextInt();
+				
+				if (input == (int)input)
+				{
+					if (input < min || input > max)
+						throw new Exception();
+					noException = true;
+				}
+				else
+				{
+					throw new Exception();
+				}
+			}
+			catch (Exception exception)
+			{	
+				System.out.println("Input is not correct. Try again.");
+				values.nextLine();
+				continue;
+			}
+		}
+
+		return input;
+	}
+	
 }
+
